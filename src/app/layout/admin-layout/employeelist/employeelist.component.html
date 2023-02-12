@@ -1,0 +1,52 @@
+<div class="main-content" style="margin-top: 10px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card form-head-color " data-color="azure">
+                    <div class="custom_table__header">
+                        <h4 class="card-title">Employee List</h4>
+                        <button mat-raised-button color="primary" (click)="createUserDialog()"> <i class="fa fa-plus mr-2"></i>Add Employee</button>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12 d-flex justify-content-between">
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered medium">
+                                <thead>
+                                    <tr>
+                                        <th class="align-middle sort-icon"> SL</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Website</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of datalists; let i = index">
+                                        <td >{{i+1}}</td>
+                                        <td class="text-capitalize"> {{item.name}} </td>
+                                        <td class="text-capitalize"> {{item.email}} </td>
+                                        <td class="text-capitalize"> {{item.phone}} </td>
+                                        <td class="text-capitalize"> {{item.website}} </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="table-total-count">Total Records </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,126 @@
+<h2 mat-dialog-title>{{type|titlecase}} Employee List
+  <button [mat-dialog-close]="true" class="close text-white dilog__close__btn" data-dismiss="modal" type="button">
+    <span aria-hidden="true">×</span>
+  </button>
+</h2>
+<form #createForm="ngForm" (ngSubmit)="onsubmit()">
+  <mat-dialog-content class="mat-typography" style="background: #f7f7f7;">
+    <div class="row mb-2">
+
+
+
+      <mat-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel> Employee Information</ng-template>
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field appearance="fill" class="full-width">
+                  <mat-label>First Name</mat-label>
+                  <input matInput placeholder="Last name, First name" formControlName="first_name" required>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="fill" class="full-width">
+                  <mat-label>Last Name</mat-label>
+                  <input matInput placeholder="Last name, First name" formControlName="last_name" required>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <!-- <mat-form-field appearance="fill" class="full-width">
+                  <mat-label>Date of Birth</mat-label>
+                  <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+                </mat-form-field> -->
+                <mat-form-field appearance="fill" class="full-width">
+                  <mat-label>Date of Birth</mat-label>
+                  <input matInput [matDatepicker]="picker" formControlName="dath_barth">
+                  <mat-hint>MM/DD/YYYY</mat-hint>
+                  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="fill" class="full-width">
+                  <mat-label>Phone</mat-label>
+                  <input type="number" matInput placeholder="Last name, First name" formControlName="phone_number"
+                    required>
+                </mat-form-field>
+
+              </div>
+            </div>
+            <button mat-button (click)="from1()" matStepperNext>Next</button>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" label="Employee Skill">
+          <form [formGroup]="secondFormGroup">
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field appearance="fill" class="full-width">
+                  <mat-label>Skill Name</mat-label>
+                  <input matInput formControlName="skill_name" placeholder="Ex. 1 Main St, New York, NY" required>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="fill" class="full-width">
+                  <mat-label>Experience in Years</mat-label>
+                  <input matInput formControlName="experience_years" placeholder="Ex. 1 Main St, New York, NY" required>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="fill">
+                  <mat-label>Skill Level</mat-label>
+                  <mat-select formControlName="skill_level">
+                    <mat-option value="Beginner">Beginner</mat-option>
+                    <mat-option value="Intermediate">Intermediate</mat-option>
+                    <mat-option value="Advanced">Advanced</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+
+              </div>
+            </div>
+
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="from2()" matStepperNext>Next</button>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          <!-- <p>You are now done.</p> -->
+          <div class="row">
+            <div class="col md-6">
+              <div *ngFor="let item of cashDataShow; let i = index">
+                <p>Name: {{item.first_name}} {{item.last_name}}</p>
+                <p>Dath of Bath : {{item.dath_barth}}</p>
+                <p>Phone Number : {{item.phone_number}}</p>
+              </div>
+            </div>
+
+            <div class="col md-6">
+              <div *ngFor="let item of cashSkillDataShow; let i = index">
+                <p>Skill: {{item.skill_name}}</p>
+                <p>Experience : {{item.experience_years}}</p>
+                <p>Skill Level: {{item.skill_level}}</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+          </div>
+        </mat-step>
+      </mat-stepper>
+    </div>
+  </mat-dialog-content>
+  <!-- <mat-dialog-actions align="end">
+    <button [mat-dialog-close]="true" class="mr-2" mat-raised-button>
+      <i class="icofont icofont-close-line"></i>
+      Close
+    </button>
+    <button [disabled]="!createForm.form.valid||submitButton" color="primary" mat-raised-button>
+      <i class="icofont icofont-save"></i>
+      {{type|titlecase}}
+    </button>
+  </mat-dialog-actions> -->
+</form>

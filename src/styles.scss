@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
+	line-height: 1.5;
+	font-weight: 400;
+	font-family: "Lato", Arial, sans-serif;
+	color: #000;
+}
+body {
+    background: #f8f9fd !important;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
